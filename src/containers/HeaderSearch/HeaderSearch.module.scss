@@ -1,0 +1,20 @@
+@import "@/theme/variables.scss";
+
+.HeaderSearch {
+  flex-direction: row;
+  min-width: 100%;
+  column-gap: 15px;
+  justify-content: center;
+  margin-bottom: 25px;
+  .ButtonSearch {
+    background-color: $black-main;
+    color: $black-contrastText;
+    border-radius: 20px;
+    width: 176px;
+    font-size: $font-size-md;
+    &:hover {
+      background-color: $black-dark;
+      box-shadow: $box-shadow-button;
+    }
+  }
+}

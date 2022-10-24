@@ -1,0 +1,24 @@
+/**
+  To generate ligh, dark and contrastText color you can use mui color tool
+  https://m2.material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=110f14
+*/
+
+$black-light: #3a3a3a;
+$black-main: #141414;
+$black-dark: #000000;
+$black-contrastText: #ffffff;
+$gray-input-light: #ffffff;
+$gray-input-main: #eaeaea;
+$gray-input-dark: #b8b8b8;
+$gray-input-contrastText: #000000;
+$placeholder-main: #b4b4b4;
+
+:export {
+  blackMain: $black-main;
+  blackContrastText: $black-contrastText;
+  grayInputLight: $gray-input-light;
+  grayInputMain: $gray-input-main;
+  grayInputDark: $gray-input-dark;
+  grayInputContrastText: $gray-input-contrastText;
+  placeholderMain: $placeholder-main;
+}

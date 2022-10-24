@@ -1,0 +1,30 @@
+@import "@/theme/variables.scss";
+
+.InputSearch {
+  max-width: 692px;
+
+  .InputSearchRoot {
+    background-color: $gray-input-main;
+    border-radius: 20px;
+    padding: 0px 16px;
+    height: 60px;
+    transition: box-shadow 0.2s;
+    &:hover,
+    &:focus-within {
+      box-shadow: $box-shadow-input-hover;
+    }
+    input {
+      padding-left: 8px;
+      font-size: $font-size-md;
+      &::placeholder {
+        color: $placeholder-main;
+        opacity: 1;
+        font-size: $font-size-md;
+      }
+    }
+  }
+  .SearchIcon {
+    cursor: pointer;
+    color: $placeholder-main;
+  }
+}
