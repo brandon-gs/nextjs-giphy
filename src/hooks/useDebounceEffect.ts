@@ -9,7 +9,7 @@ export interface IUseDebounceParams {
 
 const useDebounceEffect = ({
   callback,
-  debounceTime = 200,
+  debounceTime = 500,
   condition = false,
 }: IUseDebounceParams) => {
   useEffect(() => {
