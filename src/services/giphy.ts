@@ -15,7 +15,6 @@ export const GiphyService = {
   getGifs:
     ({ endpoint, search }: GiphyParamsRequest) =>
     async ({ pageParam = 0 }: PaginationRequest): Promise<GiphyResponse> => {
-      console.log(search);
       const searchParam = search ? `q=${search}&lang=es` : "";
       const response = await fetch(
         `api/giphy?endpoint=${endpoint}&limit=${LIMIT}&offset=${
