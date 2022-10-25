@@ -21,6 +21,8 @@
       "@/components/*": ["src/components/*"],
       "@/containers": ["src/containers"],
       "@/containers/*": ["src/containers/*"],
+      "@/types": ["src/types"],
+      "@/types/*": ["src/types/*"],
       "@/theme/*": ["src/theme/*"],
       "@/styles/*": ["src/styles/*"]
     }
