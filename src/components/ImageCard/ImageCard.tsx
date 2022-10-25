@@ -1,7 +1,7 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import { Box, IconButton } from "@mui/material";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./ImageCard.module.scss";
 
 interface ImageCardProps {
@@ -25,4 +25,7 @@ const ImageCard: FC<ImageCardProps> = ({ imageUrl, placeholderUrl }) => {
     </Box>
   );
 };
-export default ImageCard;
+
+export default memo(ImageCard, (prevProps, nextProps) => {
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+});
