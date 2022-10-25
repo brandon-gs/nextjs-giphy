@@ -10,7 +10,7 @@
     background-color: $black-main;
     color: $black-contrastText;
     border-radius: 20px;
-    width: 176px;
+    min-width: 176px;
     font-size: $font-size-md;
     &:hover {
       background-color: $black-dark;
