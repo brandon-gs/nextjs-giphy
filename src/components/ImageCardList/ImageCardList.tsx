@@ -54,7 +54,7 @@ const ImageCardList: FC<ImageCardListProps> = ({
       {hasNextPage && (
         <>
           <ImageCardListSkeleton />
-          <div ref={observerRef} />
+          {!isFetchingNextPage && <div ref={observerRef} />}
         </>
       )}
     </Fragment>
