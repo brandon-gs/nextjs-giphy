@@ -37,7 +37,13 @@ const HeaderSearch = () => {
 
   return (
     <Stack className={styles.HeaderSearch}>
-      <InputSearch inputRef={inputRef} onSearch={handleSearch} />
+      <div className={styles.HeaderGrow} />
+      <InputSearch
+        className={styles.InputSearch}
+        InputProps={{ className: styles.InputRootSearch }}
+        inputRef={inputRef}
+        onSearch={handleSearch}
+      />
       <Button className={styles.ButtonSearch} onClick={handleSearch}>
         Buscar
       </Button>

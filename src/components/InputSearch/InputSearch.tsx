@@ -4,13 +4,19 @@ import { FC, RefObject, useEffect } from "react";
 import { useListenSearchParam } from "@/hooks";
 import { useRouter } from "next/router";
 import styles from "./InputSearch.module.scss";
+import clsx from "clsx";
 
 type InputSearchProps = Omit<TextFieldProps, "variant"> & {
   inputRef: RefObject<HTMLInputElement>;
   onSearch: () => void;
 };
 
-const InputSearch: FC<InputSearchProps> = ({ onSearch, ...props }) => {
+const InputSearch: FC<InputSearchProps> = ({
+  onSearch,
+  className,
+  InputProps,
+  ...props
+}) => {
   const router = useRouter();
   const { search } = useListenSearchParam();
 
@@ -30,12 +36,12 @@ const InputSearch: FC<InputSearchProps> = ({ onSearch, ...props }) => {
   return (
     <TextField
       defaultValue={search}
-      className={styles.InputSearch}
+      className={clsx(styles.InputSearch, className)}
       variant="standard"
       fullWidth
       placeholder="Buscar"
       InputProps={{
-        className: styles.InputSearchRoot,
+        className: clsx(styles.InputSearchRoot, InputProps?.className),
         name: "search",
         startAdornment: (
           <>
