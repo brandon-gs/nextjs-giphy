@@ -13,7 +13,7 @@ const useListenSearchParam = () => {
       }
       return prevSearchState;
     });
-  }, [router]);
+  }, [router.query]);
   return { search };
 };
 export default useListenSearchParam;

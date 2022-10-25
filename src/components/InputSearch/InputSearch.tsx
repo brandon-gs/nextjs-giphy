@@ -1,9 +1,9 @@
 import { IconButton, TextField, TextFieldProps } from "@mui/material";
 import { Clear, Search as SearchIcon } from "@mui/icons-material";
-import styles from "./InputSearch.module.scss";
 import { FC, RefObject, useEffect } from "react";
 import { useListenSearchParam } from "@/hooks";
 import { useRouter } from "next/router";
+import styles from "./InputSearch.module.scss";
 
 type InputSearchProps = Omit<TextFieldProps, "variant"> & {
   inputRef: RefObject<HTMLInputElement>;
@@ -15,7 +15,10 @@ const InputSearch: FC<InputSearchProps> = ({ onSearch, ...props }) => {
   const { search } = useListenSearchParam();
 
   const clearInput = () => {
-    router.push({ pathname: "/" });
+    if (props.inputRef.current) {
+      props.inputRef.current.value = "";
+      router.push({ pathname: "/" });
+    }
   };
 
   useEffect(() => {
