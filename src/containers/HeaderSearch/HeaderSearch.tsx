@@ -22,7 +22,11 @@ const HeaderSearch = () => {
     const searchOnEnterPress = (event: KeyboardEvent) => {
       if (event.key === "Enter" && inputRef.current) {
         const newSearch = inputRef.current.value;
-        router.push({ href: "/", query: { search: newSearch } });
+        let query: Record<string, string> = {};
+        if (newSearch) {
+          query.search = newSearch;
+        }
+        router.push({ href: "/", query });
       }
     };
     window.addEventListener("keydown", searchOnEnterPress);
@@ -33,7 +37,7 @@ const HeaderSearch = () => {
 
   return (
     <Stack className={styles.HeaderSearch}>
-      <InputSearch inputRef={inputRef} />
+      <InputSearch inputRef={inputRef} onSearch={handleSearch} />
       <Button className={styles.ButtonSearch} onClick={handleSearch}>
         Buscar
       </Button>
