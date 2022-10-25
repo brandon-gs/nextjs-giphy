@@ -8,11 +8,7 @@ const useListenSearchParam = () => {
   useEffect(() => {
     const querySearch = router.query.search ?? "";
     setSearch((prevSearchState) => {
-      if (
-        prevSearchState !== querySearch &&
-        typeof querySearch === "string" &&
-        querySearch !== ""
-      ) {
+      if (prevSearchState !== querySearch && typeof querySearch === "string") {
         return querySearch;
       }
       return prevSearchState;
