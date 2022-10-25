@@ -1,8 +1,11 @@
-import { IconButton, TextField } from "@mui/material";
+import { IconButton, TextField, TextFieldProps } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import styles from "./InputSearch.module.scss";
+import { FC } from "react";
 
-const InputSearch = () => {
+type InputSearchProps = Omit<TextFieldProps, "variant">;
+
+const InputSearch: FC<InputSearchProps> = (props) => {
   return (
     <TextField
       className={styles.InputSearch}
@@ -19,6 +22,7 @@ const InputSearch = () => {
         ),
         disableUnderline: true,
       }}
+      {...props}
     />
   );
 };
