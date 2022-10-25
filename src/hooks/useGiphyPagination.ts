@@ -6,12 +6,14 @@ import useNearScreen from "./useNearScreen";
 
 interface UseGiphyPaginationParams<ApiResponse> {
   service: ({ pageParam }: { pageParam: number }) => Promise<ApiResponse>;
+  key: string;
 }
 
 const useGiphyPagination = <
   ApiResponse extends { pagination: GiphyPagination }
 >({
   service,
+  key,
 }: UseGiphyPaginationParams<ApiResponse>) => {
   const { isNearScreen, observerRef } = useNearScreen({
     distance: 2000,
@@ -25,9 +27,10 @@ const useGiphyPagination = <
     hasNextPage,
     isFetching,
     isFetchingNextPage,
+    refetch,
     status,
   } = useInfiniteQuery<ApiResponse>(
-    ["trending"],
+    [key],
     async ({ pageParam = 0 }) => await service({ pageParam }),
     {
       getNextPageParam: (prevPage: ApiResponse, pages: Array<ApiResponse>) =>
@@ -54,6 +57,8 @@ const useGiphyPagination = <
     data,
     hasNextPage,
     observerRef,
+    fetchNextPage,
+    refetch,
   };
 };
 export default useGiphyPagination;

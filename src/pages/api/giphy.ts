@@ -1,7 +1,7 @@
-import { GiphyTrendingResponse } from "@/types/Giphy";
+import { GiphyResponse } from "@/types/Giphy";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type SuccessData = GiphyTrendingResponse;
+type SuccessData = GiphyResponse;
 type ErrorData = {
   message: string;
   error: boolean;
@@ -14,11 +14,12 @@ export default async function handler(
 ) {
   try {
     const limit = parseInt(req.query.limit as string) ?? 20;
-    const query = new URLSearchParams(
-      req.query as Record<string, string>
-    ).toString();
+    const query = req.query as Record<string, string>;
+    const endpoint = query.endpoint;
+    delete query.endpoint;
+    const paginationQuery = new URLSearchParams(query).toString();
     const response = await fetch(
-      `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.GIPHY_KEY}&${query}`,
+      `https://api.giphy.com/v1/gifs/${endpoint}?api_key=${process.env.GIPHY_KEY}&${paginationQuery}`,
       {
         method: "GET",
       }

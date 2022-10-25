@@ -1,18 +1,27 @@
-import type { GiphyTrendingResponse } from "@/types/Giphy";
+import type { GiphyResponse } from "@/types/Giphy";
 
 const LIMIT = 12; // Limit results by query
 
-interface GetTrendingRequest {
+interface PaginationRequest {
   pageParam: number;
 }
 
+interface GiphyParamsRequest {
+  endpoint: "search" | "trending";
+  search?: string;
+}
+
 export const GiphyService = {
-  async getTrending({
-    pageParam = 0,
-  }: GetTrendingRequest): Promise<GiphyTrendingResponse> {
-    const response = await fetch(
-      `api/giphy/trending?limit=${LIMIT}&offset=${pageParam * LIMIT}`
-    );
-    return response.json();
-  },
+  getGifs:
+    ({ endpoint, search }: GiphyParamsRequest) =>
+    async ({ pageParam = 0 }: PaginationRequest): Promise<GiphyResponse> => {
+      console.log(search);
+      const searchParam = search ? `q=${search}&lang=es` : "";
+      const response = await fetch(
+        `api/giphy?endpoint=${endpoint}&limit=${LIMIT}&offset=${
+          pageParam * LIMIT
+        }&${searchParam}`
+      );
+      return response.json();
+    },
 };

@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import type { GiphyData, GiphyTrendingResponse } from "@/types/Giphy";
+import type { GiphyResponse } from "@/types/Giphy";
 import ImageCard from "../ImageCard/ImageCard";
 import { Stack } from "@mui/material";
 import ImageCardListSkeleton from "./ImageCardListSkeleton";
@@ -10,7 +10,7 @@ interface ImageCardListProps {
   status: "loading" | "success" | "error";
   isFetching: boolean;
   isFetchingNextPage: boolean;
-  data?: InfiniteData<GiphyTrendingResponse>;
+  data?: InfiniteData<GiphyResponse>;
   hasNextPage?: boolean;
   error: unknown;
   observerRef: (node: HTMLDivElement) => void;

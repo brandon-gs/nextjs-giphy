@@ -23,7 +23,7 @@ export interface GiphyData {
   };
 }
 
-export interface GiphyTrendingResponse {
+export interface GiphyResponse {
   meta: GiphyMeta;
   pagination: GiphyPagination;
   data: GiphyData[];
