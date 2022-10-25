@@ -2,7 +2,9 @@
 
 .ImageCard {
   position: relative;
-  width: 352px;
+
+  width: 100%;
+  max-width: 352px;
   height: 230px;
   border-radius: 20px;
   overflow: hidden;
