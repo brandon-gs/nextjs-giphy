@@ -39,7 +39,7 @@ const InputSearch: FC<InputSearchProps> = ({ onSearch, ...props }) => {
         name: "search",
         startAdornment: (
           <>
-            {search !== "" || props.inputRef.current?.value !== "" ? (
+            {search || props.inputRef.current?.value ? (
               <IconButton onClick={clearInput}>
                 <Clear className={styles.SearchIcon} />
               </IconButton>
