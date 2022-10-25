@@ -12,6 +12,7 @@ $gray-input-main: #eaeaea;
 $gray-input-dark: #b8b8b8;
 $gray-input-contrastText: #000000;
 $placeholder-main: #b4b4b4;
+$pink-main: #ff1d53;
 
 :export {
   blackMain: $black-main;
@@ -21,4 +22,5 @@ $placeholder-main: #b4b4b4;
   grayInputDark: $gray-input-dark;
   grayInputContrastText: $gray-input-contrastText;
   placeholderMain: $placeholder-main;
+  pinkMain: $pink-main;
 }

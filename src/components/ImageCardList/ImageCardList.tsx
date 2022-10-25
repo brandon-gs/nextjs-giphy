@@ -44,6 +44,7 @@ const ImageCardList: FC<ImageCardListProps> = ({
             {group.data.map(({ id, images }, index) => (
               <ImageCard
                 key={`image-${id}-idx-${index}`}
+                id={id}
                 imageUrl={images.original.webp}
                 placeholderUrl={images.preview_webp.url}
               />

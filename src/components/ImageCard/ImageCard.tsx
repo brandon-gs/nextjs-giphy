@@ -1,15 +1,21 @@
-import { FavoriteBorder } from "@mui/icons-material";
-import { Box, IconButton } from "@mui/material";
-import Image from "next/image";
+import { Box } from "@mui/material";
+import dynamic from "next/dynamic";
+import Image from "next/legacy/image";
 import { FC, memo } from "react";
 import styles from "./ImageCard.module.scss";
 
+// This component make use of localStorage so we shouldn't use it on ssr
+const ImageCardLike = dynamic(() => import("../ImageCardLike/ImageCardLike"), {
+  ssr: false,
+});
+
 interface ImageCardProps {
+  id: string;
   imageUrl: string;
   placeholderUrl: string;
 }
 
-const ImageCard: FC<ImageCardProps> = ({ imageUrl, placeholderUrl }) => {
+const ImageCard: FC<ImageCardProps> = ({ id, imageUrl, placeholderUrl }) => {
   return (
     <Box className={styles.ImageCard}>
       <Image
@@ -19,9 +25,7 @@ const ImageCard: FC<ImageCardProps> = ({ imageUrl, placeholderUrl }) => {
         placeholder={"blur"}
         blurDataURL={placeholderUrl}
       />
-      <IconButton className={styles.ButtonLike}>
-        <FavoriteBorder className={styles.LikeIcon} />
-      </IconButton>
+      <ImageCardLike id={id} />
     </Box>
   );
 };
