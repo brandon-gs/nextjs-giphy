@@ -1,3 +1,4 @@
+export { default as Center } from "./Center/Center";
 export { default as ImageCard } from "./ImageCard/ImageCard";
 export { default as ImageCardSkeleton } from "./ImageCard/ImageCardSkeleton";
 export { default as ImageCardList } from "./ImageCardList/ImageCardList";
