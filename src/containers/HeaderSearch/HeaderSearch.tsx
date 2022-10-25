@@ -1,24 +1,39 @@
 import { InputSearch } from "@/components";
 import { Button, Stack } from "@mui/material";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./HeaderSearch.module.scss";
 
 const HeaderSearch = () => {
   const router = useRouter();
-  const [search, setSearch] = useState<string>("");
-
-  const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
-  };
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
-    router.push({ href: "/", query: { search } });
+    if (inputRef.current) {
+      const search = inputRef.current.value;
+      router.push({ href: "/", query: { search } });
+    }
   };
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    const searchOnEnterPress = (event: KeyboardEvent) => {
+      if (event.key === "Enter" && inputRef.current) {
+        const newSearch = inputRef.current.value;
+        router.push({ href: "/", query: { search: newSearch } });
+      }
+    };
+    window.addEventListener("keydown", searchOnEnterPress);
+    return () => {
+      window.removeEventListener("keydown", searchOnEnterPress);
+    };
+  }, [inputRef]);
 
   return (
     <Stack className={styles.HeaderSearch}>
-      <InputSearch onChange={handleChangeSearch} value={search} />
+      <InputSearch inputRef={inputRef} />
       <Button className={styles.ButtonSearch} onClick={handleSearch}>
         Buscar
       </Button>
