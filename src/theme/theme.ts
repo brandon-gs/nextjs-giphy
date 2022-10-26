@@ -24,6 +24,9 @@ const theme = createTheme({
     error: {
       main: red.A400,
     },
+    primary: {
+      main: palette.blackMain,
+    },
   },
   typography: {
     fontFamily: '"Inter", cursive',

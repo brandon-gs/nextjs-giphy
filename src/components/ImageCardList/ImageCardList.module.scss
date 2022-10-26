@@ -1,3 +1,5 @@
+@import "@/theme/variables.scss";
+
 .ImageCardList {
   justify-content: center;
   flex-direction: row;
@@ -5,4 +7,10 @@
   gap: 44px;
   margin-bottom: 44px;
   width: 100%;
+}
+
+.NoInternetIcon {
+  width: 240px;
+  height: 240px;
+  color: $black-main;
 }

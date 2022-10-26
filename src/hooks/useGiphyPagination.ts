@@ -43,6 +43,10 @@ const useGiphyPagination = <
     fetchNextPage();
   }, [fetchNextPage]);
 
+  const handleRefetch = async () => {
+    await refetch();
+  };
+
   useDebounceEffect({
     callback: handleFetchNextPage,
     condition:
@@ -58,7 +62,7 @@ const useGiphyPagination = <
     hasNextPage,
     observerRef,
     fetchNextPage,
-    refetch,
+    refetch: handleRefetch,
   };
 };
 export default useGiphyPagination;

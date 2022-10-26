@@ -1,10 +1,11 @@
 import { FC, Fragment } from "react";
 import type { GiphyResponse } from "@/types/Giphy";
 import ImageCard from "../ImageCard/ImageCard";
-import { Stack } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import ImageCardListSkeleton from "./ImageCardListSkeleton";
 import styles from "./ImageCardList.module.scss";
 import { InfiniteData } from "@tanstack/react-query";
+import NoInternetIcon from "@mui/icons-material/WifiOff";
 
 interface ImageCardListProps {
   status: "loading" | "success" | "error";
@@ -14,6 +15,7 @@ interface ImageCardListProps {
   hasNextPage?: boolean;
   error: unknown;
   observerRef: (node: HTMLDivElement) => void;
+  refetch: () => Promise<void>;
 }
 
 const ImageCardList: FC<ImageCardListProps> = ({
@@ -23,6 +25,7 @@ const ImageCardList: FC<ImageCardListProps> = ({
   data,
   error,
   hasNextPage,
+  refetch,
   observerRef,
 }) => {
   const isError = error !== null;
@@ -33,7 +36,15 @@ const ImageCardList: FC<ImageCardListProps> = ({
   }
 
   if (data === undefined || isError) {
-    return <p>Retry get data</p>;
+    return (
+      <Stack justifyContent="center" alignItems="center" mt={4}>
+        <NoInternetIcon className={styles.NoInternetIcon} />
+        <Typography mb={3}>No pudimos obtener los datos</Typography>
+        <Button variant="contained" onClick={refetch}>
+          Reintentar
+        </Button>
+      </Stack>
+    );
   }
 
   return (

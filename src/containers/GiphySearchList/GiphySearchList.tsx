@@ -9,11 +9,10 @@ interface GiphySearchListProps {
 }
 
 const GiphySearchList: FC<GiphySearchListProps> = ({ search }) => {
-  const { fetchNextPage, refetch, ...giphyTrendingData } =
-    useGiphyPagination<GiphyResponse>({
-      service: GiphyService.getGifs({ search, endpoint: "search" }),
-      key: `search-${search}`,
-    });
+  const giphyTrendingData = useGiphyPagination<GiphyResponse>({
+    service: GiphyService.getGifs({ search, endpoint: "search" }),
+    key: `search-${search}`,
+  });
 
   return <ImageCardList {...giphyTrendingData} />;
 };
