@@ -1,0 +1,11 @@
+@import "@/theme/variables.scss";
+
+.ImageCard {
+  position: relative;
+  width: 100%;
+  max-width: 352px;
+  height: 230px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: $box-shadow-button;
+}

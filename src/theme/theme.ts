@@ -18,8 +18,14 @@ const theme = createTheme({
     placeholder: {
       main: palette.placeholderMain,
     },
+    pink: {
+      main: palette.pinkMain,
+    },
     error: {
       main: red.A400,
+    },
+    primary: {
+      main: palette.blackMain,
     },
   },
   typography: {
@@ -32,12 +38,14 @@ declare module "@mui/material/styles" {
     black: Palette["primary"];
     grayInput: Palette["primary"];
     placeholder: Palette["primary"];
+    pink: Palette["primary"];
   }
 
   export interface PaletteOptions {
     black: PaletteOptions["primary"];
     grayInput: PaletteOptions["primary"];
     placeholder: PaletteOptions["primary"];
+    pink: PaletteOptions["primary"];
   }
 }
 

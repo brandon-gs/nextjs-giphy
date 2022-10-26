@@ -1,0 +1,21 @@
+@import "@/theme/variables.scss";
+
+.ImageCardLike {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  transition: background-color, transform 0.2s ease-in-out;
+  &:hover {
+    background-color: $gray-input-main;
+    transform: scale(116%);
+  }
+  .LikeIcon {
+    color: $black-main;
+  }
+  .LikeIconFill {
+    color: $pink-main;
+  }
+}
