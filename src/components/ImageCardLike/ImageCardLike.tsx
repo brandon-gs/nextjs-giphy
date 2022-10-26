@@ -13,14 +13,22 @@ const ImageCardLike = ({ id }: ImageCardLikeProps) => {
 
   if (isLiked) {
     return (
-      <IconButton className={styles.ImageCardLike} onClick={removeLike(id)}>
+      <IconButton
+        className={styles.ImageCardLike}
+        onClick={removeLike(id)}
+        aria-label="quitar me gusta"
+      >
         <Favorite className={styles.LikeIconFill} />
       </IconButton>
     );
   }
 
   return (
-    <IconButton className={styles.ImageCardLike} onClick={addLike(id)}>
+    <IconButton
+      className={styles.ImageCardLike}
+      onClick={addLike(id)}
+      aria-label="agregar a me gusta"
+    >
       <FavoriteBorder className={styles.LikeIcon} />
     </IconButton>
   );

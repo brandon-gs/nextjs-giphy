@@ -46,11 +46,11 @@ const InputSearch: FC<InputSearchProps> = ({
         startAdornment: (
           <>
             {search || props.inputRef.current?.value ? (
-              <IconButton onClick={clearInput}>
+              <IconButton onClick={clearInput} aria-label="limpiar busqueda">
                 <Clear className={styles.SearchIcon} />
               </IconButton>
             ) : (
-              <IconButton onClick={onSearch}>
+              <IconButton onClick={onSearch} aria-label="hacer busqueda">
                 <SearchIcon className={styles.SearchIcon} />
               </IconButton>
             )}
