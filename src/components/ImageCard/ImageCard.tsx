@@ -1,3 +1,4 @@
+import { UserLikes, UseUserLikes } from "@/hooks/useUserLikes";
 import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
@@ -9,13 +10,20 @@ const ImageCardLike = dynamic(() => import("../ImageCardLike/ImageCardLike"), {
   ssr: false,
 });
 
-interface ImageCardProps {
+interface ImageCardProps extends UseUserLikes {
   id: string;
   imageUrl: string;
   placeholderUrl: string;
 }
 
-const ImageCard: FC<ImageCardProps> = ({ id, imageUrl, placeholderUrl }) => {
+const ImageCard: FC<ImageCardProps> = ({
+  id,
+  imageUrl,
+  placeholderUrl,
+  likes,
+  addLike,
+  removeLike,
+}) => {
   return (
     <Box className={styles.ImageCard}>
       <Image
@@ -26,7 +34,12 @@ const ImageCard: FC<ImageCardProps> = ({ id, imageUrl, placeholderUrl }) => {
         blurDataURL={placeholderUrl}
         alt="Giphy image"
       />
-      <ImageCardLike id={id} />
+      <ImageCardLike
+        id={id}
+        likes={likes}
+        addLike={addLike}
+        removeLike={removeLike}
+      />
     </Box>
   );
 };

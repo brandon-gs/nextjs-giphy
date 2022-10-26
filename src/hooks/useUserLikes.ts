@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
 
-type UserLikes = Record<string, boolean>;
+export type UserLikes = Record<string, boolean>;
 
-const useUserLikes = () => {
+interface UseUserLikesParams {
+  listener: boolean;
+}
+
+export interface UseUserLikes {
+  likes: UserLikes;
+  addLike: (id: string) => () => void;
+  removeLike: (id: string) => () => void;
+}
+
+const useUserLikes = ({ listener }: UseUserLikesParams): UseUserLikes => {
   const [likes, setLikes] = useState<UserLikes>({});
 
   const getAllLikes = (): UserLikes => {
@@ -24,6 +34,8 @@ const useUserLikes = () => {
   };
 
   useEffect(() => {
+    if (!listener) return;
+
     const syncLikes = () => {
       if (localStorage) {
         const likes = getAllLikes();

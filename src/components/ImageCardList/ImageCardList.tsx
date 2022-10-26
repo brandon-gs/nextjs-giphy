@@ -6,8 +6,9 @@ import ImageCardListSkeleton from "./ImageCardListSkeleton";
 import styles from "./ImageCardList.module.scss";
 import { InfiniteData } from "@tanstack/react-query";
 import NoInternetIcon from "@mui/icons-material/WifiOff";
+import { UseUserLikes } from "@/hooks/useUserLikes";
 
-interface ImageCardListProps {
+interface ImageCardListProps extends UseUserLikes {
   status: "loading" | "success" | "error";
   isFetching: boolean;
   isFetchingNextPage: boolean;
@@ -25,6 +26,9 @@ const ImageCardList: FC<ImageCardListProps> = ({
   data,
   error,
   hasNextPage,
+  likes,
+  addLike,
+  removeLike,
   refetch,
   observerRef,
 }) => {
@@ -58,6 +62,9 @@ const ImageCardList: FC<ImageCardListProps> = ({
                 id={id}
                 imageUrl={images.original.webp}
                 placeholderUrl={images.preview_webp.url}
+                likes={likes}
+                addLike={addLike}
+                removeLike={removeLike}
               />
             ))}
           </Fragment>

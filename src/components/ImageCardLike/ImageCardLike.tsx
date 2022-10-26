@@ -1,14 +1,18 @@
-import { useUserLikes } from "@/hooks";
+import { UseUserLikes } from "@/hooks/useUserLikes";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import styles from "./ImageCardLike.module.scss";
 
-interface ImageCardLikeProps {
+interface ImageCardLikeProps extends UseUserLikes {
   id: string;
 }
 
-const ImageCardLike = ({ id }: ImageCardLikeProps) => {
-  const { likes, addLike, removeLike } = useUserLikes();
+const ImageCardLike = ({
+  id,
+  likes,
+  addLike,
+  removeLike,
+}: ImageCardLikeProps) => {
   const isLiked = Boolean(likes[id]);
 
   if (isLiked) {
