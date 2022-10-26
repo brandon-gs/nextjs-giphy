@@ -24,6 +24,7 @@ const ImageCard: FC<ImageCardProps> = ({ id, imageUrl, placeholderUrl }) => {
         src={imageUrl}
         placeholder={"blur"}
         blurDataURL={placeholderUrl}
+        alt="Giphy image"
       />
       <ImageCardLike id={id} />
     </Box>
