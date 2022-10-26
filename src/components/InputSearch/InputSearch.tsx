@@ -1,10 +1,13 @@
-import { IconButton, TextField, TextFieldProps } from "@mui/material";
+import { IconButton, TextFieldProps } from "@mui/material";
 import { Clear, Search as SearchIcon } from "@mui/icons-material";
 import { FC, RefObject, useEffect } from "react";
 import { useListenSearchParam } from "@/hooks";
 import { useRouter } from "next/router";
 import styles from "./InputSearch.module.scss";
 import clsx from "clsx";
+import dynamic from "next/dynamic";
+
+const TextField = dynamic(() => import("@mui/material/TextField"));
 
 type InputSearchProps = Omit<TextFieldProps, "variant"> & {
   inputRef: RefObject<HTMLInputElement>;
